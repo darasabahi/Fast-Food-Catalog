@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../axios";
 import Loding from "../Loding/loding";
 
-const CategoryList = () => {
+const CategoryList = ({ filterItems }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -20,13 +20,13 @@ const CategoryList = () => {
     } else {
       return (
         <ul className="nav">
-          <li className="nav-item">
+          <li className="nav-item" onClick={() => filterItems()}>
             <a className="nav-link" href="#">
               همه فست فودها
             </a>
           </li>
           {categories.map((food) => (
-            <li key={food.id}>
+            <li key={food.id} onClick={() => filterItems(food.id)}>
               <a className="nav-link" href="#">
                 {food.name}
               </a>

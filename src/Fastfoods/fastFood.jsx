@@ -1,23 +1,6 @@
-import { useEffect, useState } from "react";
-import axios from "../axios";
 import Loding from "../Loding/loding";
 import FastFoodList from "../FastFoodlist/fastFoodList";
-const FastFood = () => {
-  const [loading, setLoading] = useState(false);
-  const [fastFoodItems, setFastFoods] = useState([]);
-
-  const fetchData = async (categoryId = null) => {
-    setLoading(true);
-    const response = await axios.get(
-      `/FastFood/list/${categoryId ? "?categoryId=" + categoryId : ""}`
-    );
-    setFastFoods(response.data);
-    setLoading(false);
-  };
-  useEffect(() => {
-    fetchData();
-  }, []);
-
+const FastFood = ({ loading, fastFoodItems }) => {
   const renderContent = () => {
     if (loading) {
       return <Loding theme="dark"></Loding>;
