@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Fast-Foot_Catlog/static/css/main.992419d3.css",
-    "main.js": "/Fast-Foot_Catlog/static/js/main.045534e7.js",
-    "static/media/header-background.jpg": "/Fast-Foot_Catlog/static/media/header-background.75e1292fc1693fc8838e.jpg",
-    "static/media/404.png": "/Fast-Foot_Catlog/static/media/404.5c0857e285455ad6e21f.png",
-    "index.html": "/Fast-Foot_Catlog/index.html",
-    "main.992419d3.css.map": "/Fast-Foot_Catlog/static/css/main.992419d3.css.map",
-    "main.045534e7.js.map": "/Fast-Foot_Catlog/static/js/main.045534e7.js.map"
+    "main.css": "/Fast-Food-Catalog/static/css/main.e7fb622b.css",
+    "main.js": "/Fast-Food-Catalog/static/js/main.86f4dc1d.js",
+    "static/media/header-background.jpg": "/Fast-Food-Catalog/static/media/header-background.75e1292fc1693fc8838e.jpg",
+    "static/media/404.png": "/Fast-Food-Catalog/static/media/404.5c0857e285455ad6e21f.png",
+    "index.html": "/Fast-Food-Catalog/index.html",
+    "main.e7fb622b.css.map": "/Fast-Food-Catalog/static/css/main.e7fb622b.css.map",
+    "main.86f4dc1d.js.map": "/Fast-Food-Catalog/static/js/main.86f4dc1d.js.map"
   },
   "entrypoints": [
-    "static/css/main.992419d3.css",
-    "static/js/main.045534e7.js"
+    "static/css/main.e7fb622b.css",
+    "static/js/main.86f4dc1d.js"
   ]
 }
