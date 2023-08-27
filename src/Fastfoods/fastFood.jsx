@@ -13,7 +13,7 @@ const FastFood = ({ loading, fastFoodItems }) => {
           <div className="alert alert-warning text-center">
             برای کلید واژه فوق هیچ محصولی یافت نشد!
           </div>
-          <img className="mx-auto mt-5 d-block" src={notFound} />
+          <img className="mx-auto mt-5 d-block" src={notFound} alt="404" />
         </>
       );
     } else {
