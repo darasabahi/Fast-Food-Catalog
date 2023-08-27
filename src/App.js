@@ -4,6 +4,7 @@ import FastFood from "./Fastfoods/fastFood";
 import Header from "./Header/header";
 import { useState, useEffect } from "react";
 import axios from "./axios";
+import SearchBar from "./Search/searchBar";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -20,14 +21,26 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-  console.log(loading, fastFoodItems);
+
   const filterItems = (categoryId) => {
     fetchData(categoryId);
   };
+
+  const searchItem = async (term) => {
+    setLoading(true);
+    const response = await axios.get(
+      `/FastFood/search/${term ? "?term=" + term : ""}`
+    );
+    setFastFoods(response.data);
+    setLoading(false);
+  };
+
   return (
     <div className="wrapper bg-faded-dark">
       <Header></Header>
-      <CategoryList filterItems={filterItems}></CategoryList>
+      <CategoryList filterItems={filterItems} fastFoodItems={fastFoodItems}>
+        <SearchBar searchItem={searchItem} />
+      </CategoryList>
       <FastFood loading={loading} fastFoodItems={fastFoodItems}></FastFood>
     </div>
   );

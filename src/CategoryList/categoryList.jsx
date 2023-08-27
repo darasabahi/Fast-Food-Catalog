@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "../axios";
 import Loding from "../Loding/loding";
 
-const CategoryList = ({ filterItems }) => {
+const CategoryList = ({ filterItems, children }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
@@ -19,20 +19,23 @@ const CategoryList = ({ filterItems }) => {
       return <Loding></Loding>;
     } else {
       return (
-        <ul className="nav">
-          <li className="nav-item" onClick={() => filterItems()}>
-            <a className="nav-link" href="#">
-              همه فست فودها
-            </a>
-          </li>
-          {categories.map((food) => (
-            <li key={food.id} onClick={() => filterItems(food.id)}>
+        <div className="ps-3 w-100 d-flex align-items-center justify-content-between gap-5 ">
+          <ul className="nav">
+            <li className="nav-item" onClick={() => filterItems()}>
               <a className="nav-link" href="#">
-                {food.name}
+                همه فست فودها
               </a>
             </li>
-          ))}
-        </ul>
+            {categories.map((food) => (
+              <li key={food.id} onClick={() => filterItems(food.id)}>
+                <a className="nav-link" href="#">
+                  {food.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          {children}
+        </div>
       );
     }
   };
