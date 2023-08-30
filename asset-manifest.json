@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Fast-Food-Catalog/static/css/main.e7fb622b.css",
-    "main.js": "/Fast-Food-Catalog/static/js/main.c28d2d22.js",
+    "main.js": "/Fast-Food-Catalog/static/js/main.ef58ca5f.js",
     "static/media/header-background.jpg": "/Fast-Food-Catalog/static/media/header-background.75e1292fc1693fc8838e.jpg",
     "static/media/404.png": "/Fast-Food-Catalog/static/media/404.5c0857e285455ad6e21f.png",
     "index.html": "/Fast-Food-Catalog/index.html",
     "main.e7fb622b.css.map": "/Fast-Food-Catalog/static/css/main.e7fb622b.css.map",
-    "main.c28d2d22.js.map": "/Fast-Food-Catalog/static/js/main.c28d2d22.js.map"
+    "main.ef58ca5f.js.map": "/Fast-Food-Catalog/static/js/main.ef58ca5f.js.map"
   },
   "entrypoints": [
     "static/css/main.e7fb622b.css",
-    "static/js/main.c28d2d22.js"
+    "static/js/main.ef58ca5f.js"
   ]
 }
