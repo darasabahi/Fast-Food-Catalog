@@ -1,15 +1,21 @@
 import { useEffect, useState } from "react";
 import axios from "../axios";
 import Loding from "../Loding/loding";
+import CATEGRYLIST from "./CATEGORYLIST.const";
 
 const CategoryList = ({ filterItems, children }) => {
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     const fetchcategories = async () => {
-      const response = await axios.get("/FoodCategory/categories");
-      setCategories(response.data);
-      setLoading(false);
+      try {
+        const response = await axios.get("/FoodCategory/categories");
+        setCategories(response.data);
+      } catch (error) {
+        setCategories(CATEGRYLIST);
+      } finally {
+        setLoading(false);
+      }
     };
     fetchcategories();
   }, []);
@@ -23,7 +29,9 @@ const CategoryList = ({ filterItems, children }) => {
           <ul className="nav">
             <li className="nav-item" onClick={() => filterItems()}>
               <a className="nav-link" href="#">
-                همه فست فودها
+                {categories[0].name !== "Burger"
+                  ? "همه فست فودها"
+                  : "All Fastfoods"}
               </a>
             </li>
             {categories.map((food) => (

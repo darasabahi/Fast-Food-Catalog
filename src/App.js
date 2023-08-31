@@ -5,6 +5,7 @@ import Header from "./Header/header";
 import { useState, useEffect } from "react";
 import axios from "./axios";
 import SearchBar from "./Search/searchBar";
+import FASTFOOD from "./FASTFOODS.const";
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -12,10 +13,16 @@ function App() {
 
   const fetchData = async (categoryId = null) => {
     setLoading(true);
-    const response = await axios.get(
-      `/FastFood/list/${categoryId ? "?categoryId=" + categoryId : ""}`
-    );
-    setFastFoods(response.data);
+    try {
+      const response = await axios.get(
+        `/FastFood/list/${categoryId ? "?categoryId=" + categoryId : ""}`
+      );
+
+      setFastFoods(response.data);
+    } catch (error) {
+      setFastFoods(FASTFOOD);
+    }
+
     setLoading(false);
   };
   useEffect(() => {
