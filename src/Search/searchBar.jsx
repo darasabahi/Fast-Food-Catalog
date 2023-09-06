@@ -15,13 +15,13 @@ const SearchBar = ({ searchItem }) => {
     >
       <div className="input-group">
         <input
-          className="border-success rounded-end pe-5 form-control"
+          className="border-success rounded-end ps-5 form-control"
           type="text"
-          placeholder="جستجوری فست فود . . ."
+          placeholder="Search For FastFoods . . ."
           value={value}
           onChange={(e) => setValue(e.target.value)}
         ></input>
-        <BsSearch className=" position-absolute top-50 translate-middle-y text-munted me-3"></BsSearch>
+        <BsSearch className=" position-absolute ms-4 top-50 translate-middle-y text-munted"></BsSearch>
       </div>
     </form>
   );

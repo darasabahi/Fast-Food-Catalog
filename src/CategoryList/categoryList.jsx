@@ -1,31 +1,18 @@
-import { useEffect, useState } from "react";
-import axios from "../axios";
 import Loding from "../Loding/loding";
-import CATEGRYLIST from "./CATEGORYLIST.const";
+import useAxios from "../useAxios";
 
 const CategoryList = ({ filterItems, children }) => {
-  const [categories, setCategories] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchcategories = async () => {
-      try {
-        const response = await axios.get("/FoodCategory/categories");
-        setCategories(response.data);
-      } catch (error) {
-        setCategories(CATEGRYLIST);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchcategories();
-  }, []);
+  const [categories, , loading] = useAxios({
+    url: "/FoodCategory/categories",
+    type: "categories",
+  });
 
   const renderContent = () => {
     if (loading) {
       return <Loding></Loding>;
     } else {
       return (
-        <div className="ps-3 w-100 d-flex align-items-center justify-content-between gap-5 ">
+        <div className="pe-3 w-100 d-flex align-items-center justify-content-between gap-5 ">
           <ul className="nav">
             <li className="nav-item" onClick={() => filterItems()}>
               <a className="nav-link" href="#">
@@ -58,4 +45,5 @@ const CategoryList = ({ filterItems, children }) => {
     </nav>
   );
 };
+
 export default CategoryList;

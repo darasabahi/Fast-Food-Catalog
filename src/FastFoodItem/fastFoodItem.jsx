@@ -1,5 +1,6 @@
 import { HiShoppingCart } from "react-icons/hi";
 import "./fastFoodItem.css";
+
 const FastFoodItem = ({ name, price, ingredients, imageUrl, delay }) => {
   return (
     <div
@@ -7,7 +8,7 @@ const FastFoodItem = ({ name, price, ingredients, imageUrl, delay }) => {
       style={{ animationDelay: delay + "s" }}
     >
       <span className="badge badge-end badge-shadow bg-success fs-md fw-medium">
-        قیمت: {price.toLocaleString()} تومان
+        Price: {price.toLocaleString()}$
       </span>
       <div className="card__placeholder">
         <img className="card-img-top" src={imageUrl} alt="fastfoodimg" />
@@ -17,10 +18,11 @@ const FastFoodItem = ({ name, price, ingredients, imageUrl, delay }) => {
         <div className="fs-ms fw-bold text-muted mb-3">{ingredients}</div>
         <button className="btn btn-outline-success btn-sm w-100 mt-auto fw-bold">
           <HiShoppingCart className="fs-5 ms-3"></HiShoppingCart>
-          افزودن به سبد خرید
+          Add To Cart
         </button>
       </div>
     </div>
   );
 };
+
 export default FastFoodItem;
