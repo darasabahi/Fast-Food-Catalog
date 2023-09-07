@@ -5,12 +5,14 @@ import Header from "./Header/header";
 import { useState } from "react";
 import SearchBar from "./Search/searchBar";
 import useAxios from "./useAxios";
+import { AppProvider } from "./context";
 
-function App() {
+const App = () => {
   const [url, setUrl] = useState("/FastFood/list");
   const [type, setType] = useState("fastfoods");
   const [payload, setPayload] = useState(null);
   const [fastFoodItems, , loading] = useAxios({ url, type, payload });
+
 
   const filterItems = (categoryId) => {
     setType("filter");
@@ -25,14 +27,16 @@ function App() {
   };
 
   return (
-    <div className="wrapper bg-faded-dark">
-      <Header></Header>
-      <CategoryList filterItems={filterItems} fastFoodItems={fastFoodItems}>
-        <SearchBar searchItem={searchItem} />
-      </CategoryList>
-      <FastFood loading={loading} fastFoodItems={fastFoodItems}></FastFood>
-    </div>
+    <AppProvider>
+      <div className="wrapper bg-faded-dark">
+        <Header></Header>
+        <CategoryList filterItems={filterItems} fastFoodItems={fastFoodItems}>
+          <SearchBar searchItem={searchItem} />
+        </CategoryList>
+        <FastFood loading={loading} fastFoodItems={fastFoodItems}></FastFood>
+      </div>
+    </AppProvider>
   );
-}
+};
 
 export default App;

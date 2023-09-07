@@ -7,7 +7,7 @@ const instance = axios.create({
   baseURL: "https://react-mini-projects-api.classbon.com",
 });
 const useAxios = (axiosParams) => {
-  const [response, setRespons] = useState(null);
+  const [response, setRespons] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
 
@@ -51,6 +51,7 @@ const useAxios = (axiosParams) => {
   };
   useEffect(() => {
     fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [axiosParams.url]);
   return [response, error, loading];
 };

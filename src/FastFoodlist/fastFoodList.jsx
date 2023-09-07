@@ -1,9 +1,12 @@
 import FastFoodItem from "../FastFoodItem/fastFoodItem";
+import { useAppContext } from "../context";
 
 const FastFoodList = ({ fastFoodItems }) => {
   let delay = 0.1;
+  const contex = useAppContext();
+  const language = contex.language;
   return (
-    <div className="row ">
+    <div className="row " dir={language === "fn" ? "rtl" : "ltr"}>
       {fastFoodItems.map((fastfood) => {
         delay += 0.03;
         return (

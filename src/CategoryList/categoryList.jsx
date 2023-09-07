@@ -1,7 +1,11 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import Loding from "../Loding/loding";
+import { useAppContext } from "../context";
 import useAxios from "../useAxios";
 
 const CategoryList = ({ filterItems, children }) => {
+  const contex = useAppContext();
+  const language = contex.language;
   const [categories, , loading] = useAxios({
     url: "/FoodCategory/categories",
     type: "categories",
@@ -12,13 +16,14 @@ const CategoryList = ({ filterItems, children }) => {
       return <Loding></Loding>;
     } else {
       return (
-        <div className="pe-3 w-100 d-flex align-items-center justify-content-between gap-5 ">
+        <div
+          className="pe-3 w-100 d-flex align-items-center justify-content-between gap-5 "
+          dir={language === "fn" ? "rtl" : "ltr"}
+        >
           <ul className="nav">
             <li className="nav-item" onClick={() => filterItems()}>
               <a className="nav-link" href="#">
-                {categories[0].name !== "Burger"
-                  ? "همه فست فودها"
-                  : "All Fastfoods"}
+                {language === "fn" ? "همه فست فودها" : "All Fastfoods"}
               </a>
             </li>
             {categories.map((food) => (

@@ -1,8 +1,11 @@
 import Loding from "../Loding/loding";
 import FastFoodList from "../FastFoodlist/fastFoodList";
 import notFound from "../assets/images/404.png";
+import { useAppContext } from "../context";
 
 const FastFood = ({ loading, fastFoodItems }) => {
+  const context = useAppContext();
+  const language = context.language;
   const renderContent = () => {
     if (loading) {
       return <Loding theme="dark"></Loding>;
@@ -11,7 +14,9 @@ const FastFood = ({ loading, fastFoodItems }) => {
       return (
         <>
           <div className="alert alert-warning text-center">
-            برای کلید واژه فوق هیچ محصولی یافت نشد!
+            {language === "fn"
+              ? "برای کلید واژه فوق هیچ محصولی یافت نشد"
+              : "No fastfood were found for the above keyword"}
           </div>
           <img className="mx-auto mt-5 d-block" src={notFound} alt="404" />
         </>
