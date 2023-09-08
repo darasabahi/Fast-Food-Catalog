@@ -1,6 +1,24 @@
-header{
-    height:200px;
-    background: url('../assets/images/header-background.jpg');
-    letter-spacing: 3px;
-  
+header {
+  height: 200px;
+  background: url("../assets/images/header-background.jpg");
+  letter-spacing: 3px;
+}
+.cart-icon {
+  background-color: aliceblue;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  align-items: center;
+  margin-left: 72%;
+  position: relative;
+  margin-top: -20px;
+}
+.total-cart-icon {
+  background-color: red;
+  width: 23px;
+  color: aliceblue;
+  height: 23px;
+  border-radius: 50%;
+  text-align: center;
+  padding-left: 2px;
 }
