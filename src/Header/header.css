@@ -10,15 +10,37 @@ header {
   border-radius: 50%;
   align-items: center;
   margin-left: 72%;
-  position: relative;
-  margin-top: -20px;
+  margin-top: 0px;
 }
 .total-cart-icon {
   background-color: red;
   width: 23px;
-  color: aliceblue;
   height: 23px;
+  font-size: small;
+  color: aliceblue;
   border-radius: 50%;
   text-align: center;
   padding-left: 2px;
+  padding-top: 3px;
+}
+.fixed-bar {
+  width: 100%;
+  height: 60px;
+  background-color: hsl(200, 72%, 13%);
+  position: fixed;
+  z-index: 100;
+  animation: show-fixed-bar 2s alternate;
+}
+
+@keyframes show-fixed-bar {
+  0% {
+    opacity: 0;
+    background-color: hsl(200, 20%, 80%);
+    top: -40px;
+  }
+  100% {
+    opacity: 100%;
+    background-color: hsl(200, 72%, 13%);
+    top: 0px;
+  }
 }
