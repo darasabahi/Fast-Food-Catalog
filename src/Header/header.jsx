@@ -2,10 +2,13 @@ import "./header.css";
 import { HiShoppingCart } from "react-icons/hi";
 import { useCartContext } from "../cartContext";
 import { useState, useEffect } from "react";
+import MiniCart from "../Cart/MiniCart/miniCart";
 
 const Header = () => {
   const { cart } = useCartContext();
   const [isVisible, setIsVisible] = useState(true);
+  const [miniCartisVisible, setMiniCartIsVisible] = useState(false);
+  let timerId = null;
 
   const listenToScroll = () => {
     let heightToShowFixedBar = 200;
@@ -18,12 +21,31 @@ const Header = () => {
       setIsVisible(true);
     }
   };
+  const handleMouseOver = () => {
+    setMiniCartIsVisible(true);
+    clearTimeout(timerId);
+  };
+  const handleMouseLeave = () => {
+    timerId = setTimeout(() => {
+      setMiniCartIsVisible(false);
+    }, 1000);
+  };
 
   const Cart = () => {
     return (
       <div className="cart-icon">
-        <HiShoppingCart className="fs-3 ms-1 mt-1"></HiShoppingCart>
-        <div className="total-cart-icon  ">{cart.length}</div>
+        <HiShoppingCart
+          className="fs-3 ms-1 mt-1"
+          onMouseOver={handleMouseOver}
+          onMouseLeave={handleMouseLeave}
+        ></HiShoppingCart>
+        <div className="total-cart-icon">{cart.length}</div>
+        {miniCartisVisible && (
+          <MiniCart
+            onMouseOver={handleMouseOver}
+            onMouseLeave={handleMouseLeave}
+          />
+        )}
       </div>
     );
   };

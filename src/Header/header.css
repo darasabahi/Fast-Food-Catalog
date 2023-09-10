@@ -1,7 +1,6 @@
 header {
   height: 200px;
   background: url("../assets/images/header-background.jpg");
-  letter-spacing: 3px;
 }
 .cart-icon {
   background-color: aliceblue;
@@ -11,6 +10,7 @@ header {
   align-items: center;
   margin-left: 72%;
   margin-top: 0px;
+  cursor: pointer;
 }
 .total-cart-icon {
   background-color: red;
@@ -20,7 +20,7 @@ header {
   color: aliceblue;
   border-radius: 50%;
   text-align: center;
-  padding-left: 2px;
+
   padding-top: 3px;
 }
 .fixed-bar {
