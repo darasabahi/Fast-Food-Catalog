@@ -28,7 +28,7 @@ const Header = () => {
   const handleMouseLeave = () => {
     timerId = setTimeout(() => {
       setMiniCartIsVisible(false);
-    }, 1000);
+    }, 200);
   };
 
   const Cart = () => {

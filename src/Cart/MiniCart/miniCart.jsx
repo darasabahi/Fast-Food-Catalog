@@ -1,7 +1,7 @@
 import "./miniCart.css";
 import { useCartContext } from "../../cartContext";
 const MiniCart = ({ onMouseOver, onMouseLeave }) => {
-  const { cart } = useCartContext();
+  const { cart, total, quantity } = useCartContext();
   return (
     <div
       className="mini-cart"
@@ -9,7 +9,7 @@ const MiniCart = ({ onMouseOver, onMouseLeave }) => {
       onMouseLeave={onMouseLeave}
     >
       {cart.map((fastfood) => (
-        <div className="fastfood"  key={fastfood.id + "fastfood"}>
+        <div className="fastfood" key={fastfood.id + "fastfood"}>
           <img
             key={fastfood.id + "img"}
             className="fastfood-img"
@@ -25,6 +25,11 @@ const MiniCart = ({ onMouseOver, onMouseLeave }) => {
           </div>
         </div>
       ))}
+      <div className="total">
+        <span>Total:</span>
+        <span>{total.toLocaleString()}$</span>
+        <span>{quantity}</span>
+      </div>
     </div>
   );
 };

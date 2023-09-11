@@ -1,13 +1,12 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from "react";
 import reducer from "./reducer";
-
 const CartContext = createContext();
 
 const initialState = {
   loading: false,
   cart: [],
   total: 0,
-  amount: 0,
+  quantity: 0,
 };
 
 const CartProvider = ({ children }) => {
@@ -15,7 +14,11 @@ const CartProvider = ({ children }) => {
 
   const addToCart = (addObject) => {
     dispatch({ type: "ADD_TO_CART", payload: addObject });
+    dispatch({ type: "GET_TOTALS" });
   };
+  useEffect(() => {
+    dispatch({ type: "GET_TOTALS" });
+  }, [state.cart]);
 
   return (
     <CartContext.Provider value={{ ...state, addToCart }}>

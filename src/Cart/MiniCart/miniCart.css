@@ -1,19 +1,33 @@
 .mini-cart {
   width: 300px;
   height: fit-content;
-  max-height: 800px;
-  overflow-y: scroll;
+  max-height: 500px;
   background-color: aliceblue;
   margin-left: 72%;
   margin-top: -18px;
   z-index: 100;
   position: relative;
+  border-radius: 10px;
+  overflow-y: scroll;
+  scrollbar-width: thin;
+  -ms-overflow-style: none;
+}
+.mini-cart::-webkit-scrollbar {
+  width: 5px;
+}
+.mini-cart::-webkit-scrollbar-track {
+  background: rgb(255, 255, 255);
+}
+.mini-cart::-webkit-scrollbar-thumb {
+  background-color: rgb(73, 73, 75);
+  border-radius: 20px;
 }
 .fastfood-img {
   width: 120px;
   height: 70px;
 }
 .fastfood {
+  padding: 2px;
   display: flex;
   margin: 5px;
   > span {
@@ -30,5 +44,28 @@
     display: block;
     width: 150px;
     height: 50px;
+  }
+}
+.total {
+  background-color: brown;
+  position: sticky;
+  border-radius: 10px;
+  bottom: 0;
+  height: 25px;
+  padding-left: 20px;
+  padding-top: 2px;
+  color: aliceblue;
+  > span {
+    margin-left: 10px;
+  }
+  :last-child {
+    float: right;
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    border-radius: 20%;
+    background-color: aliceblue;
+    color: red;
+    text-align: center;
   }
 }
