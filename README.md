@@ -1,7 +1,7 @@
 <h1 align="center">Hi 👋, I'm Dara</h1>
 <h3 align="center">This is a project of an online fast food store</h3>
 
-<img title="Grabcam" src="https://github.com/darasabahi/Fast-Food-Catalog/public/image/mockup.jpg">
+<img title="Grabcam" src="public/image/File.jpg">
 
 <h3 align="left">Languages used:</h3>
 <img src="https://img.shields.io/badge/-Html-black?style=for-the-badge&logo=html5" alt="html" />
