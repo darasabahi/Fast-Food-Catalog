@@ -4,10 +4,12 @@ import { useCartContext } from "../cartContext";
 import { useState, useEffect } from "react";
 import MiniCart from "../Cart/MiniCart/miniCart";
 
-const Header = () => {
-  const { cart } = useCartContext();
+const Header = ({ cartRef }) => {
+  const { quantity } = useCartContext();
   const [isVisible, setIsVisible] = useState(true);
   const [miniCartisVisible, setMiniCartIsVisible] = useState(false);
+  const [quantityCart, setQuantityCart] = useState(0);
+  const [cartActive, setCartActive] = useState("");
   let timerId = null;
 
   const listenToScroll = () => {
@@ -31,15 +33,31 @@ const Header = () => {
     }, 200);
   };
 
+  useEffect(() => {
+    quantity !== 0 && setCartActive("active");
+    setTimeout(() => {
+      setQuantityCart(quantity);
+      setCartActive("");
+    }, 3000);
+  }, [quantity]);
+
+  useEffect(() => {
+    window.addEventListener("scroll", listenToScroll);
+    return () => window.removeEventListener("scroll", listenToScroll);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   const Cart = () => {
     return (
-      <div className="cart-icon">
+      <div className={`cart-icon ${cartActive}`}>
         <HiShoppingCart
           className="fs-3 ms-1 mt-1"
           onMouseOver={handleMouseOver}
           onMouseLeave={handleMouseLeave}
         ></HiShoppingCart>
-        <div className="total-cart-icon">{cart.length}</div>
+        <div className="total-cart-icon" ref={cartRef}>
+          {quantityCart}
+        </div>
         {miniCartisVisible && (
           <MiniCart
             onMouseOver={handleMouseOver}
@@ -49,12 +67,6 @@ const Header = () => {
       </div>
     );
   };
-
-  useEffect(() => {
-    window.addEventListener("scroll", listenToScroll);
-    return () => window.removeEventListener("scroll", listenToScroll);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   return (
     <header className="bg-size-caver bg-position-center ">

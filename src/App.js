@@ -7,12 +7,14 @@ import SearchBar from "./Search/searchBar";
 import useAxios from "./useAxios";
 import { AppProvider } from "./context";
 import { CartProvider } from "./cartContext";
+import { useRef } from "react";
 
 const App = () => {
   const [url, setUrl] = useState("/FastFood/list");
   const [type, setType] = useState("fastfoods");
   const [payload, setPayload] = useState(null);
   const [fastFoodItems, , loading] = useAxios({ url, type, payload });
+  const cartRef = useRef();
 
   const filterItems = (categoryId) => {
     setType("filter");
@@ -30,11 +32,15 @@ const App = () => {
     <CartProvider>
       <AppProvider>
         <div className="wrapper bg-faded-dark">
-          <Header></Header>
+          <Header cartRef={cartRef}></Header>
           <CategoryList filterItems={filterItems} fastFoodItems={fastFoodItems}>
             <SearchBar searchItem={searchItem} />
           </CategoryList>
-          <FastFood loading={loading} fastFoodItems={fastFoodItems}></FastFood>
+          <FastFood
+            loading={loading}
+            fastFoodItems={fastFoodItems}
+            cartRef={cartRef}
+          ></FastFood>
         </div>
       </AppProvider>
     </CartProvider>

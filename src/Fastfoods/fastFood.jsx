@@ -3,9 +3,10 @@ import FastFoodList from "../FastFoodlist/fastFoodList";
 import notFound from "../assets/images/404.png";
 import { useAppContext } from "../context";
 
-const FastFood = ({ loading, fastFoodItems }) => {
+const FastFood = ({ loading, fastFoodItems, cartRef }) => {
   const context = useAppContext();
   const language = context.language;
+
   const renderContent = () => {
     if (loading) {
       return <Loding theme="dark"></Loding>;
@@ -22,7 +23,12 @@ const FastFood = ({ loading, fastFoodItems }) => {
         </>
       );
     } else {
-      return <FastFoodList fastFoodItems={fastFoodItems}></FastFoodList>;
+      return (
+        <FastFoodList
+          fastFoodItems={fastFoodItems}
+          cartRef={cartRef}
+        ></FastFoodList>
+      );
     }
   };
   return <div className="container mt-4">{renderContent()}</div>;

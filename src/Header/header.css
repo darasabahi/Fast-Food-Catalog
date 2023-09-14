@@ -12,6 +12,9 @@ header {
   margin-top: 0px;
   cursor: pointer;
 }
+.cart-icon.active {
+  animation: cart-active 2s alternate;
+}
 .total-cart-icon {
   background-color: red;
   width: 23px;
@@ -20,7 +23,6 @@ header {
   color: aliceblue;
   border-radius: 50%;
   text-align: center;
-
   padding-top: 3px;
 }
 .fixed-bar {
@@ -28,7 +30,7 @@ header {
   height: 60px;
   background-color: hsl(200, 72%, 13%);
   position: fixed;
-  z-index: 100;
+  z-index: 40;
   animation: show-fixed-bar 2s alternate;
 }
 
@@ -42,5 +44,29 @@ header {
     opacity: 100%;
     background-color: hsl(200, 72%, 13%);
     top: 0px;
+  }
+}
+@keyframes cart-active {
+  0% {
+    translate: 0px;
+  }
+  20% {
+    translate: 4px;
+    rotate: 10deg;
+  }
+  40% {
+    translate: -4px;
+    rotate: -10deg;
+  }
+  60% {
+    translate: 4px;
+    rotate: 10deg;
+  }
+  80% {
+    translate: -4px;
+    rotate: -10deg;
+  }
+  100% {
+    translate: 0px;
   }
 }
