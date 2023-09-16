@@ -10,6 +10,28 @@ const useAxios = (axiosParams) => {
   const [response, setRespons] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
+  const [fastFoodItems, setFastFooditems] = useState([]);
+  const [observerLoading, setObserverLoading] = useState(false);
+
+  const loadFastFood = (page) => {
+    setObserverLoading(true);
+    const firstItem = page === 1 ? 0 : (page - 1) * 6;
+    const lastItem = firstItem + 6;
+    const slicedArray = FASTFOODS.slice(firstItem, lastItem);
+    setTimeout(() => {
+      setFastFooditems((oldData) => [...oldData, ...slicedArray]);
+      setObserverLoading(false);
+    }, 500);
+  };
+
+  useEffect(() => {
+    setRespons(fastFoodItems);
+  }, [fastFoodItems]);
+
+  useEffect(() => {
+    fetchData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [axiosParams.url, axiosParams.page]);
 
   const fetchData = async () => {
     try {
@@ -21,7 +43,7 @@ const useAxios = (axiosParams) => {
           setRespons(CATEGRYLIST);
           break;
         case "fastfoods":
-          setRespons(FASTFOODS);
+          loadFastFood(axiosParams.page);
           break;
         case "filter":
           setRespons(
@@ -49,10 +71,6 @@ const useAxios = (axiosParams) => {
       setLoading(false);
     }
   };
-  useEffect(() => {
-    fetchData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [axiosParams.url]);
-  return [response, error, loading];
+  return [response, error, loading, observerLoading];
 };
 export default useAxios;

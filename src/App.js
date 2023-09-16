@@ -13,7 +13,13 @@ const App = () => {
   const [url, setUrl] = useState("/FastFood/list");
   const [type, setType] = useState("fastfoods");
   const [payload, setPayload] = useState(null);
-  const [fastFoodItems, , loading] = useAxios({ url, type, payload });
+  const [page, setPage] = useState(1);
+  const [fastFoodItems, , loading, observerLoading] = useAxios({
+    url,
+    type,
+    payload,
+    page,
+  });
   const cartRef = useRef();
 
   const filterItems = (categoryId) => {
@@ -40,6 +46,9 @@ const App = () => {
             loading={loading}
             fastFoodItems={fastFoodItems}
             cartRef={cartRef}
+            setPage={setPage}
+            observerLoading={observerLoading}
+            type={type}
           ></FastFood>
         </div>
       </AppProvider>

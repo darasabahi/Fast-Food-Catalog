@@ -3,7 +3,14 @@ import FastFoodList from "../FastFoodlist/fastFoodList";
 import notFound from "../assets/images/404.png";
 import { useAppContext } from "../context";
 
-const FastFood = ({ loading, fastFoodItems, cartRef }) => {
+const FastFood = ({
+  loading,
+  fastFoodItems,
+  cartRef,
+  setPage,
+  observerLoading,
+  type,
+}) => {
   const context = useAppContext();
   const language = context.language;
 
@@ -11,7 +18,7 @@ const FastFood = ({ loading, fastFoodItems, cartRef }) => {
     if (loading) {
       return <Loding theme="dark"></Loding>;
     }
-    if (fastFoodItems.length === 0) {
+    if (fastFoodItems.length === 0 && type === "search") {
       return (
         <>
           <div className="alert alert-warning text-center">
@@ -24,10 +31,18 @@ const FastFood = ({ loading, fastFoodItems, cartRef }) => {
       );
     } else {
       return (
-        <FastFoodList
-          fastFoodItems={fastFoodItems}
-          cartRef={cartRef}
-        ></FastFoodList>
+        <>
+          <FastFoodList
+            fastFoodItems={fastFoodItems}
+            cartRef={cartRef}
+            setPage={setPage}
+          ></FastFoodList>
+          {observerLoading && (
+            <div className="d-flex justify-content-center">
+              <div className="spinner-border"></div>
+            </div>
+          )}
+        </>
       );
     }
   };
