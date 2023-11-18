@@ -29,6 +29,9 @@ const MiniCart = ({ onMouseOver, onMouseLeave }) => {
         <span>Total:</span>
         <span>{total.toLocaleString()}$</span>
         <span>{quantity}</span>
+        <div className="bTNContent">
+          <button className="viweCartBTN">Viwe Cart</button>
+        </div>
       </div>
     </div>
   );

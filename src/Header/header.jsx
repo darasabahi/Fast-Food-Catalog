@@ -3,6 +3,10 @@ import { HiShoppingCart } from "react-icons/hi";
 import { useCartContext } from "../cartContext";
 import { useState, useEffect } from "react";
 import MiniCart from "../Cart/MiniCart/miniCart";
+import { HeaderComponent } from "./header.css.js";
+import { Badge, Typography } from "@mui/material";
+import Box from "@mui/material/Box";
+import { ShoppingCart } from "@mui/icons-material";
 
 const Header = ({ cartRef }) => {
   const { quantity } = useCartContext();
@@ -69,20 +73,30 @@ const Header = ({ cartRef }) => {
   };
 
   return (
-    <header className="bg-size-caver bg-position-center ">
-      {isVisible ? (
-        <Cart />
-      ) : (
-        <div className="fixed-bar ">
+    <HeaderComponent>
+      <header className="bg-size-caver bg-position-center bootstrap">
+        {isVisible ? (
           <Cart />
+        ) : (
+          <div className="fixed-bar ">
+            <Cart />
+          </div>
+        )}
+        <div className="container">
+          <h2 className="text-start text-light text-uppercase">
+            fast food catolog
+          </h2>
         </div>
-      )}
-      <div className="container">
-        <h2 className="text-start text-light text-uppercase">
-          fast food catolog
-        </h2>
+      </header>
+      <div className="materialui">
+        <Typography variant="h5" component="h2">
+          <Box sx={{ textTransform: "uppercase", m: 1 }}>fast food catolog</Box>
+        </Typography>
+        <Badge badgeContent={quantityCart} color="error" className="badgeIcon">
+          <ShoppingCart></ShoppingCart>
+        </Badge>
       </div>
-    </header>
+    </HeaderComponent>
   );
 };
 
